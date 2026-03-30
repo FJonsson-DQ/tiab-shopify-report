@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TIAB Shopify Sync - run-23740620333</title>
+  <style>
+:root {
+  --bg: #0b1220;
+  --panel: #131c31;
+  --panel-2: #1a2743;
+  --text: #e8eefc;
+  --muted: #a6b4d0;
+  --line: #2a3a5e;
+  --ok: #23c16b;
+  --warn: #f6c24a;
+  --err: #ef5b5b;
+  --link: #7cb8ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  background: linear-gradient(180deg, #0b1220 0%, #0f1730 100%);
+  color: var(--text);
+}
+.container {
+  width: min(1200px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.title { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+.subtitle { color: var(--muted); margin-top: 8px; max-width: 760px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-size: 14px;
+}
+.grid { display: grid; gap: 16px; }
+.grid.metrics { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 24px; }
+.card {
+  background: rgba(19,28,49,0.92);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+.metric-label { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+.metric-value { font-size: 28px; font-weight: 800; }
+.metric-sub { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.kicker { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+.section-title { margin: 0 0 14px; font-size: 20px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+}
+th { color: var(--muted); font-weight: 600; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.pill.ok { background: rgba(35,193,107,0.18); color: #8ff0b6; }
+.pill.warn { background: rgba(246,194,74,0.18); color: #ffe39a; }
+.pill.err { background: rgba(239,91,91,0.18); color: #ffc0c0; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.muted { color: var(--muted); }
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  word-break: break-all;
+}
+.two-col { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 16px; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+pre.error-box {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: #ffd4d4;
+  background: rgba(239,91,91,0.08);
+  border: 1px solid rgba(239,91,91,0.25);
+  border-radius: 12px;
+  padding: 12px;
+}
+.footer { color: var(--muted); font-size: 13px; margin-top: 18px; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="kicker">Detaljrapport</div>
+        <h1 class="title">run-23740620333</h1>
+        <div class="subtitle">Detaljerad logg for en enskild synkkorning.</div>
+      </div>
+      <div class="badge"><a href="../index.html">Tillbaka till oversikten</a></div>
+    </div>
+
+    <div class="grid metrics">
+      <div class="card"><div class="metric-label">Status</div><div class="metric-value"><span class="pill ok">Success</span></div><div class="metric-sub">Start: 2026-03-30T10:40:59+00:00</div></div>
+      <div class="card"><div class="metric-label">Bearbetade</div><div class="metric-value">50</div><div class="metric-sub">Duration: 478 s</div></div>
+      <div class="card"><div class="metric-label">Skapade</div><div class="metric-value">50</div><div class="metric-sub">Nya produkter</div></div>
+      <div class="card"><div class="metric-label">Uppdaterade</div><div class="metric-value">0</div><div class="metric-sub">Befintliga produkter</div></div>
+      <div class="card"><div class="metric-label">Fel</div><div class="metric-value">0</div><div class="metric-sub">Skip images: False</div></div>
+      <div class="card"><div class="metric-label">Workflow</div><div class="metric-value code">23740620333</div><div class="metric-sub"><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23740620333">Oppna i GitHub</a></div></div>
+    </div>
+
+    
+
+    <div class="card">
+      <div class="kicker">Produktlogg</div>
+      <h2 class="section-title">Alla poster</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tid</th><th>SKU</th><th>Titel</th><th>Action</th><th>Status</th><th>Shopify ID</th><th>Fel</th></tr></thead>
+          <tbody><tr><td>2026-03-30T10:41:17+00:00</td><td>1012-14105</td><td> KULKOPPLING UNI 1700 KG</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599343980877</td><td></td></tr><tr><td>2026-03-30T10:41:26+00:00</td><td>1335-15778</td><td> LAGERSATS</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344144717</td><td></td></tr><tr><td>2026-03-30T10:41:35+00:00</td><td>1401-14713</td><td> MONTERINGSRAM JOKON MODELL 735B CHROME</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344210253</td><td></td></tr><tr><td>2026-03-30T10:41:49+00:00</td><td>1208-15471</td><td> SKYLTLYKTA LED FRISTOM BLISTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344341325</td><td></td></tr><tr><td>2026-03-30T10:41:59+00:00</td><td>1221-14282</td><td> VEV TILL VINCH</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344406861</td><td></td></tr><tr><td>2026-03-30T10:42:08+00:00</td><td>1011-12740</td><td>12740</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344472397</td><td></td></tr><tr><td>2026-03-30T10:42:18+00:00</td><td>1353-12277</td><td>4P STRIPES</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344505165</td><td></td></tr><tr><td>2026-03-30T10:42:28+00:00</td><td>1353-13866</td><td>4P STRIPES</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344603469</td><td></td></tr><tr><td>2026-03-30T10:42:37+00:00</td><td>1118-13277</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344734541</td><td></td></tr><tr><td>2026-03-30T10:42:47+00:00</td><td>1118-13333</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344865613</td><td></td></tr><tr><td>2026-03-30T10:42:57+00:00</td><td>1118-14938</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599344996685</td><td></td></tr><tr><td>2026-03-30T10:43:07+00:00</td><td>1118-14939</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345062221</td><td></td></tr><tr><td>2026-03-30T10:43:18+00:00</td><td>1118-14940</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345127757</td><td></td></tr><tr><td>2026-03-30T10:43:28+00:00</td><td>1118-14941</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345258829</td><td></td></tr><tr><td>2026-03-30T10:43:37+00:00</td><td>1118-14942</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345324365</td><td></td></tr><tr><td>2026-03-30T10:43:47+00:00</td><td>1118-15035</td><td>ADAPTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345422669</td><td></td></tr><tr><td>2026-03-30T10:43:57+00:00</td><td>1118-12341</td><td>ADAPTER 13/7</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345553741</td><td></td></tr><tr><td>2026-03-30T10:44:08+00:00</td><td>1118-12343</td><td>ADAPTER 13/7   100-PACK</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345619277</td><td></td></tr><tr><td>2026-03-30T10:44:17+00:00</td><td>1118-12345</td><td>ADAPTER 7/13</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345684813</td><td></td></tr><tr><td>2026-03-30T10:44:27+00:00</td><td>1118-14746</td><td>ADAPTER 7/13  100-PACK</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345750349</td><td></td></tr><tr><td>2026-03-30T10:44:38+00:00</td><td>1118-15349</td><td>ADAPTER CEE 3-POL SCHUKO HANE</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345815885</td><td></td></tr><tr><td>2026-03-30T10:44:49+00:00</td><td>1118-15348</td><td>ADAPTER CEE 3-POL SCHUKO HONA</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345881421</td><td></td></tr><tr><td>2026-03-30T10:44:59+00:00</td><td>1118-15339</td><td>ADAPTER I BLISTER</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599345979725</td><td></td></tr><tr><td>2026-03-30T10:45:11+00:00</td><td>1118-14522</td><td>ADAPTER LED 13-13</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346012493</td><td></td></tr><tr><td>2026-03-30T10:45:21+00:00</td><td>1118-14167</td><td>ADAPTER LED 13-7</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346078029</td><td></td></tr><tr><td>2026-03-30T10:45:29+00:00</td><td>1324-10108</td><td>AKS2000 SÄKERHETSKOPPLING </td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346143565</td><td></td></tr><tr><td>2026-03-30T10:45:37+00:00</td><td>1376-13717</td><td>ÄNDSTYCKE</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346176333</td><td></td></tr><tr><td>2026-03-30T10:45:46+00:00</td><td>1119-10451</td><td>ANKARPLATTA</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346241869</td><td></td></tr><tr><td>2026-03-30T10:45:55+00:00</td><td>1034-10030</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346307405</td><td></td></tr><tr><td>2026-03-30T10:46:04+00:00</td><td>1034-10040</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346438477</td><td></td></tr><tr><td>2026-03-30T10:46:11+00:00</td><td>1034-10085</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346504013</td><td></td></tr><tr><td>2026-03-30T10:46:19+00:00</td><td>1034-10195</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346602317</td><td></td></tr><tr><td>2026-03-30T10:46:27+00:00</td><td>1034-10243</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346667853</td><td></td></tr><tr><td>2026-03-30T10:46:36+00:00</td><td>1034-10265</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346733389</td><td></td></tr><tr><td>2026-03-30T10:46:43+00:00</td><td>1034-11513</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346798925</td><td></td></tr><tr><td>2026-03-30T10:46:53+00:00</td><td>1034-11623</td><td>ANSLAG ALKO</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346897229</td><td></td></tr><tr><td>2026-03-30T10:47:01+00:00</td><td>1034-10820</td><td>ANSLAG BPW</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346962765</td><td></td></tr><tr><td>2026-03-30T10:47:10+00:00</td><td>1034-10821</td><td>ANSLAG BPW</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599346995533</td><td></td></tr><tr><td>2026-03-30T10:47:18+00:00</td><td>1034-10822</td><td>ANSLAG BPW</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347028301</td><td></td></tr><tr><td>2026-03-30T10:47:28+00:00</td><td>1034-10823</td><td>ANSLAG BPW</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347093837</td><td></td></tr><tr><td>2026-03-30T10:47:37+00:00</td><td>1034-10935</td><td>ANSLAG BPW</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347159373</td><td></td></tr><tr><td>2026-03-30T10:47:45+00:00</td><td>1034-10936</td><td>ANSLAG BPW</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347192141</td><td></td></tr><tr><td>2026-03-30T10:47:51+00:00</td><td>1336-13269</td><td>ARBETSBELYSNING</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347224909</td><td></td></tr><tr><td>2026-03-30T10:47:57+00:00</td><td>1336-13851</td><td>ARBETSBELYSNING</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347257677</td><td></td></tr><tr><td>2026-03-30T10:48:08+00:00</td><td>1336-14550</td><td>ARBETSBELYSNING</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347323213</td><td></td></tr><tr><td>2026-03-30T10:48:19+00:00</td><td>1336-14574</td><td>ARBETSBELYSNING</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347519821</td><td></td></tr><tr><td>2026-03-30T10:48:29+00:00</td><td>1336-14575</td><td>ARBETSBELYSNING</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347585357</td><td></td></tr><tr><td>2026-03-30T10:48:39+00:00</td><td>1336-15196</td><td>ARBETSBELYSNING 112x137x74</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347650893</td><td></td></tr><tr><td>2026-03-30T10:48:48+00:00</td><td>1336-15197</td><td>ARBETSBELYSNING 70x70x45,5</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347716429</td><td></td></tr><tr><td>2026-03-30T10:48:57+00:00</td><td>1336-15198</td><td>ARBETSBELYSNING 70x70x45,5</td><td>created</td><td><span class="pill ok">Ok</span></td><td>10599347749197</td><td></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">Repository: Adrenalix/tiab-shopify-sync</div>
+  </div>
+</body>
+</html>
