@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TIAB Shopify Sync Report</title>
+  <title>TIAB Shopify Sync — Rapport</title>
   <style>
 :root {
   --bg: #0b1220;
@@ -50,7 +50,7 @@ body {
   font-size: 14px;
 }
 .grid { display: grid; gap: 16px; }
-.grid.metrics { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 24px; }
+.grid.metrics { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-bottom: 24px; }
 .card {
   background: rgba(19,28,49,0.92);
   border: 1px solid var(--line);
@@ -61,7 +61,7 @@ body {
 .metric-label { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
 .metric-value { font-size: 28px; font-weight: 800; }
 .metric-sub { font-size: 13px; color: var(--muted); margin-top: 6px; }
-.kicker { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+.kicker { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
 .section-title { margin: 0 0 14px; font-size: 20px; }
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
@@ -94,8 +94,9 @@ a:hover { text-decoration: underline; }
   font-size: 13px;
   word-break: break-all;
 }
-.two-col { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 16px; }
-@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.three-col { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+@media (max-width: 900px) { .two-col, .three-col { grid-template-columns: 1fr; } }
 pre.error-box {
   margin: 0;
   white-space: pre-wrap;
@@ -109,67 +110,122 @@ pre.error-box {
   padding: 12px;
 }
 .footer { color: var(--muted); font-size: 13px; margin-top: 18px; }
+.chart-wrap { position: relative; height: 220px; }
+.bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.bar-label { color: var(--muted); font-size: 13px; min-width: 140px; }
+.bar-track { flex: 1; background: rgba(255,255,255,0.05); border-radius: 4px; height: 10px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s; }
+.bar-count { color: var(--text); font-size: 13px; font-weight: 600; min-width: 32px; text-align: right; }
+.action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.action-card { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 14px 16px; }
+.action-card .num { font-size: 28px; font-weight: 800; }
+.action-card .lbl { font-size: 12px; color: var(--muted); margin-top: 2px; }
 </style>
 </head>
 <body>
   <div class="container">
+
     <div class="header">
       <div>
-        <div class="kicker">GitHub Pages-rapport</div>
-        <h1 class="title">TIAB -> Shopify Sync</h1>
-        <div class="subtitle">Senaste korningen, historik och felrapport i en statisk oversikt for teamet.</div>
+        <div class="kicker">Synkrapport</div>
+        <h1 class="title">TIAB → Shopify</h1>
+        <div class="subtitle">Statistik och historik — inga produktdetaljer visas.</div>
       </div>
-      <div class="badge">Repository: <span class="code">FJonsson-DQ/API-shopify-sync</span></div>
+      <div class="badge"><span class="pill warn">Partial</span> &nbsp; 2026-04-28 10:16</div>
     </div>
 
     <div class="grid metrics">
-      <div class="card"><div class="metric-label">Senaste status</div><div class="metric-value"><span class="pill ok">Success</span></div><div class="metric-sub">2026-04-28<br>07:19:46+00:00</div></div>
-      <div class="card"><div class="metric-label">Bearbetade</div><div class="metric-value">1</div><div class="metric-sub">Limit: 1</div></div>
-      <div class="card"><div class="metric-label">Skapade</div><div class="metric-value">0</div><div class="metric-sub">Nya produkter</div></div>
-      <div class="card"><div class="metric-label">Uppdaterade</div><div class="metric-value">1</div><div class="metric-sub">Befintliga produkter</div></div>
-      <div class="card"><div class="metric-label">Arkiverade</div><div class="metric-value">0</div><div class="metric-sub">Utgångna från TIAB</div></div>
-      <div class="card"><div class="metric-label">Fel</div><div class="metric-value">0</div><div class="metric-sub">Varav fatal: nej</div></div>
-      <div class="card"><div class="metric-label">Korning</div><div class="metric-value code">run-25039455818</div><div class="metric-sub"><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039455818">Oppna workflow</a></div></div>
+      <div class="card"><div class="metric-label">Bearbetade</div><div class="metric-value">5332</div><div class="metric-sub">Limit: alla</div></div>
+      <div class="card"><div class="metric-label">Skapade</div><div class="metric-value" style="color:#23c16b">11</div><div class="metric-sub">Nya produkter</div></div>
+      <div class="card"><div class="metric-label">Uppdaterade</div><div class="metric-value" style="color:#7cb8ff">5320</div><div class="metric-sub">Befintliga produkter</div></div>
+      <div class="card"><div class="metric-label">Arkiverade</div><div class="metric-value" style="color:#f6c24a">0</div><div class="metric-sub">Utgångna från TIAB</div></div>
+      <div class="card"><div class="metric-label">Fel</div><div class="metric-value" style="color:#ef5b5b">1</div><div class="metric-sub">Inga fatala</div></div>
+      <div class="card"><div class="metric-label">Körtid</div><div class="metric-value">311m 17s</div><div class="metric-sub"><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25047159141">GitHub Actions ↗</a></div></div>
     </div>
 
     
 
-    <div class="two-col">
+    <div class="two-col" style="margin-bottom:16px">
       <div class="card">
-        <div class="kicker">Senaste produkter</div>
-        <h2 class="section-title">Produktlogg</h2>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>SKU</th><th>Titel</th><th>Action</th><th>Status</th><th>Shopify ID</th></tr></thead>
-            <tbody><tr><td>1012-14105</td><td> KULKOPPLING UNI 1700 KG</td><td>updated</td><td><span class="pill ok">Ok</span></td><td>10599343980877</td></tr></tbody>
-          </table>
-        </div>
+        <div class="kicker">Trend — senaste 25 körningar</div>
+        <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
       </div>
-
       <div class="card">
-        <div class="kicker">Senaste fel</div>
-        <h2 class="section-title">Felrapport</h2>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Tid</th><th>SKU</th><th>Titel</th><th>Fel</th></tr></thead>
-            <tbody><tr><td colspan='4' class='muted'>Inga fel i senaste korningen.</td></tr></tbody>
-          </table>
-        </div>
+        <div class="kicker">Körtid — senaste 25 körningar</div>
+        <div class="chart-wrap"><canvas id="durationChart"></canvas></div>
       </div>
     </div>
 
-    <div class="card" style="margin-top:16px;">
+    <div class="two-col" style="margin-bottom:16px">
+      <div class="card">
+        <div class="kicker">Senaste körning — åtgärder</div>
+        <h2 class="section-title">Fördelning</h2>
+        <div class="action-grid"><div class='action-card'><div class='num' style='color:#23c16b'>11</div><div class='lbl'>Skapade</div></div><div class='action-card'><div class='num' style='color:#7cb8ff'>5320</div><div class='lbl'>Uppdaterade</div></div><div class='action-card'><div class='num' style='color:#f6c24a'>0</div><div class='lbl'>Arkiverade</div></div><div class='action-card'><div class='num' style='color:#ef5b5b'>1</div><div class='lbl'>Fel</div></div></div>
+      </div>
+      <div class="card">
+        <div class="kicker">Senaste körning — fel (1 st)</div>
+        <h2 class="section-title">Feltyper</h2>
+        <div class='bar-row'><span class='bar-label'>Shopify API-fel</span><div class='bar-track'><div class='bar-fill' style='width:100%;background:#ef5b5b'></div></div><span class='bar-count'>1</span></div>
+      </div>
+    </div>
+
+    <div class="card">
       <div class="kicker">Historik</div>
-      <h2 class="section-title">Senaste korningar</h2>
+      <h2 class="section-title">Senaste körningar</h2>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Korning</th><th>Status</th><th>Start</th><th>Bearbetade</th><th>Skapade</th><th>Uppdaterade</th><th>Arkiverade</th><th>Fel</th><th>Lank</th></tr></thead>
-          <tbody><tr><td><a href='runs/run-25039455818.html'>run-25039455818</a></td><td><span class="pill ok">Success</span></td><td>2026-04-28<br>07:19:46+00:00</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039455818">Workflow</a></td></tr><tr><td><a href='runs/run-25039073818.html'>run-25039073818</a></td><td><span class="pill ok">Success</span></td><td>2026-04-28<br>07:10:10+00:00</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039073818">Workflow</a></td></tr><tr><td><a href='runs/run-23835062852.html'>run-23835062852</a></td><td><span class="pill ok">Success</span></td><td>2026-04-01<br>06:23:46+00:00</td><td>1421</td><td>1420</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23835062852">Workflow</a></td></tr><tr><td><a href='runs/run-23746206882.html'>run-23746206882</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>13:05:49+00:00</td><td>110</td><td>60</td><td>50</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23746206882">Workflow</a></td></tr><tr><td><a href='runs/run-23743354831.html'>run-23743354831</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>11:53:27+00:00</td><td>55</td><td>0</td><td>55</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743354831">Workflow</a></td></tr><tr><td><a href='runs/run-23743149753.html'>run-23743149753</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>11:48:02+00:00</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743149753">Workflow</a></td></tr><tr><td><a href='runs/run-23742320685.html'>run-23742320685</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>11:26:12+00:00</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23742320685">Workflow</a></td></tr><tr><td><a href='runs/run-23741637950.html'>run-23741637950</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>11:07:36+00:00</td><td>50</td><td>0</td><td>50</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23741637950">Workflow</a></td></tr><tr><td><a href='runs/run-23740620333.html'>run-23740620333</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>10:40:59+00:00</td><td>50</td><td>50</td><td>0</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23740620333">Workflow</a></td></tr><tr><td><a href='runs/run-23736959968.html'>run-23736959968</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>09:10:30+00:00</td><td>50</td><td>0</td><td>50</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23736959968">Workflow</a></td></tr><tr><td><a href='runs/run-23735501471.html'>run-23735501471</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30<br>08:34:03+00:00</td><td>10</td><td>0</td><td>10</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23735501471">Workflow</a></td></tr><tr><td><a href='runs/run-23653685804.html'>run-23653685804</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27<br>15:22:12+00:00</td><td>50</td><td>13</td><td>37</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23653685804">Workflow</a></td></tr><tr><td><a href='runs/run-23652573865.html'>run-23652573865</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27<br>14:58:11+00:00</td><td>5</td><td>4</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23652573865">Workflow</a></td></tr><tr><td><a href='runs/run-23652346890.html'>run-23652346890</a></td><td><span class="pill err">Failed</span></td><td>2026-03-27<br>14:53:16+00:00</td><td>5</td><td>0</td><td>0</td><td>0</td><td>5</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23652346890">Workflow</a></td></tr><tr><td><a href='runs/run-23651815758.html'>run-23651815758</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27<br>14:42:06+00:00</td><td>5</td><td>0</td><td>5</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23651815758">Workflow</a></td></tr><tr><td><a href='runs/run-23650910725.html'>run-23650910725</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27<br>14:23:02+00:00</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650910725">Workflow</a></td></tr><tr><td><a href='runs/run-23650784020.html'>run-23650784020</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27<br>14:20:22+00:00</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650784020">Workflow</a></td></tr><tr><td><a href='runs/run-23650500397.html'>run-23650500397</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27<br>14:14:21+00:00</td><td>5</td><td>1</td><td>4</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650500397">Workflow</a></td></tr><tr><td><a href='runs/run-23650288222.html'>run-23650288222</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27<br>14:09:42+00:00</td><td>5</td><td>0</td><td>5</td><td>0</td><td>0</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650288222">Workflow</a></td></tr></tbody>
+          <thead><tr><th>Körning</th><th>Status</th><th>Start</th><th>Bearbetade</th><th>Skapade</th><th>Uppdaterade</th><th>Arkiverade</th><th>Fel</th><th>Tid</th><th>↗</th></tr></thead>
+          <tbody><tr><td><a href='runs/run-25047159141.html'>run-25047159141</a></td><td><span class="pill warn">Partial</span></td><td>2026-04-28 10:16</td><td>5332</td><td style='color:#8ff0b6'>11</td><td style='color:#7cb8ff'>5320</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>1</td><td style='color:#a6b4d0'>311m 17s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25047159141">↗</a></td></tr><tr><td><a href='runs/run-25039455818.html'>run-25039455818</a></td><td><span class="pill ok">Success</span></td><td>2026-04-28 07:19</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>31s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039455818">↗</a></td></tr><tr><td><a href='runs/run-25039073818.html'>run-25039073818</a></td><td><span class="pill ok">Success</span></td><td>2026-04-28 07:10</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>3m 53s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039073818">↗</a></td></tr><tr><td><a href='runs/run-23835062852.html'>run-23835062852</a></td><td><span class="pill ok">Success</span></td><td>2026-04-01 06:23</td><td>1421</td><td style='color:#8ff0b6'>1420</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>90m 50s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23835062852">↗</a></td></tr><tr><td><a href='runs/run-23746206882.html'>run-23746206882</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 13:05</td><td>110</td><td style='color:#8ff0b6'>60</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>19m 26s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23746206882">↗</a></td></tr><tr><td><a href='runs/run-23743354831.html'>run-23743354831</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:53</td><td>55</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>55</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>9m 1s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743354831">↗</a></td></tr><tr><td><a href='runs/run-23743149753.html'>run-23743149753</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:48</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>26s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743149753">↗</a></td></tr><tr><td><a href='runs/run-23742320685.html'>run-23742320685</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:26</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>22s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23742320685">↗</a></td></tr><tr><td><a href='runs/run-23741637950.html'>run-23741637950</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:07</td><td>50</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>8m 11s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23741637950">↗</a></td></tr><tr><td><a href='runs/run-23740620333.html'>run-23740620333</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 10:40</td><td>50</td><td style='color:#8ff0b6'>50</td><td style='color:#7cb8ff'>0</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>7m 58s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23740620333">↗</a></td></tr><tr><td><a href='runs/run-23736959968.html'>run-23736959968</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 09:10</td><td>50</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>8m 3s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23736959968">↗</a></td></tr><tr><td><a href='runs/run-23735501471.html'>run-23735501471</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 08:34</td><td>10</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>10</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>1m 58s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23735501471">↗</a></td></tr><tr><td><a href='runs/run-23653685804.html'>run-23653685804</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27 15:22</td><td>50</td><td style='color:#8ff0b6'>13</td><td style='color:#7cb8ff'>37</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>8m 5s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23653685804">↗</a></td></tr><tr><td><a href='runs/run-23652573865.html'>run-23652573865</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27 14:58</td><td>5</td><td style='color:#8ff0b6'>4</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>56s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23652573865">↗</a></td></tr><tr><td><a href='runs/run-23652346890.html'>run-23652346890</a></td><td><span class="pill err">Failed</span></td><td>2026-03-27 14:53</td><td>5</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>0</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>5</td><td style='color:#a6b4d0'>3s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23652346890">↗</a></td></tr><tr><td><a href='runs/run-23651815758.html'>run-23651815758</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27 14:42</td><td>5</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>49s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23651815758">↗</a></td></tr><tr><td><a href='runs/run-23650910725.html'>run-23650910725</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27 14:23</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>16s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650910725">↗</a></td></tr><tr><td><a href='runs/run-23650784020.html'>run-23650784020</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27 14:20</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>14s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650784020">↗</a></td></tr><tr><td><a href='runs/run-23650500397.html'>run-23650500397</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27 14:14</td><td>5</td><td style='color:#8ff0b6'>1</td><td style='color:#7cb8ff'>4</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>44s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650500397">↗</a></td></tr><tr><td><a href='runs/run-23650288222.html'>run-23650288222</a></td><td><span class="pill ok">Success</span></td><td>2026-03-27 14:09</td><td>5</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5</td><td style='color:#ffe39a'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>40s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23650288222">↗</a></td></tr></tbody>
         </table>
       </div>
     </div>
 
-    <div class="footer">Rapporten genererades automatiskt av sync_tiab_shopify.py och publiceras via GitHub Pages.</div>
+    <div class="footer">Automatisk rapport — inga produktidentifierare visas. Genereras av sync_tiab_shopify.py via GitHub Actions.</div>
   </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+(function() {
+  const labels = ["50288222", "50500397", "50784020", "50910725", "51815758", "52346890", "52573865", "53685804", "35501471", "36959968", "40620333", "41637950", "42320685", "43149753", "43354831", "46206882", "35062852", "39073818", "39455818", "47159141"];
+  const cfg = (label, data, color) => ({
+    label, data,
+    borderColor: color, backgroundColor: color + '33',
+    borderWidth: 2, pointRadius: 3, tension: 0.3, fill: false,
+  });
+  new Chart(document.getElementById('trendChart'), {
+    type: 'line',
+    data: { labels, datasets: [
+      cfg('Skapade',   [0, 1, 0, 0, 0, 0, 4, 13, 0, 0, 50, 0, 0, 0, 0, 60, 1420, 0, 0, 11],  '#23c16b'),
+      cfg('Uppdaterade', [5, 4, 1, 1, 5, 0, 1, 37, 10, 50, 0, 50, 1, 1, 55, 50, 1, 1, 1, 5320], '#7cb8ff'),
+      cfg('Arkiverade',[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], '#f6c24a'),
+      cfg('Fel',       [0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],   '#ef5b5b'),
+    ]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#a6b4d0', font: { size: 12 } } } },
+      scales: {
+        x: { ticks: { color: '#a6b4d0', maxRotation: 45 }, grid: { color: '#2a3a5e' } },
+        y: { ticks: { color: '#a6b4d0' }, grid: { color: '#2a3a5e' }, beginAtZero: true },
+      },
+    },
+  });
+  new Chart(document.getElementById('durationChart'), {
+    type: 'bar',
+    data: { labels, datasets: [{
+      label: 'Körtid (s)', data: [40, 44, 14, 16, 49, 3, 56, 485, 118, 483, 478, 491, 22, 26, 541, 1166, 5450, 233, 31, 18677],
+      backgroundColor: '#7cb8ff55', borderColor: '#7cb8ff',
+      borderWidth: 1, borderRadius: 4,
+    }]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#a6b4d0', font: { size: 12 } } } },
+      scales: {
+        x: { ticks: { color: '#a6b4d0', maxRotation: 45 }, grid: { color: '#2a3a5e' } },
+        y: { ticks: { color: '#a6b4d0' }, grid: { color: '#2a3a5e' }, beginAtZero: true },
+      },
+    },
+  });
+})();
+</script>
 </body>
 </html>
